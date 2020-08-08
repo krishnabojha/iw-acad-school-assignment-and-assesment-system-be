@@ -2,7 +2,7 @@
 
 #school assignment and assesment system
 
-##Team member:
+###Team member:
 1.	James Shrestha
 2.	Krishna Bahadur Ojha (ojhakrishnabahadur010@gmail.com)
 3.	Krishna Rauniyar
