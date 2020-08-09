@@ -1,0 +1,3 @@
+###Python version 3.7.4
+###Django version 3.0.3
+###psycopg2 version 2.8.5
