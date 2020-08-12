@@ -10,4 +10,4 @@ class ClassRoomModelSerializer(serializers.ModelSerializer):
 class StudyMaterialModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudyMaterial
-        fields = ['id', 'files', 'videos', 'created_at', 'updated_at', 'classid']
+        fields = ['id', 'file_title', 'video_title', 'files', 'videos', 'created_at', 'updated_at', 'classid']
