@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'studymaterial',
+    'Authentication',
     'rest_framework',
+    ##token authentication
+    'rest_framework.authtoken',
     ## for permission to react
     'corsheaders',
 ]
