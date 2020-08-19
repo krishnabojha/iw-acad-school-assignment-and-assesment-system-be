@@ -48,8 +48,11 @@ INSTALLED_APPS = [
     'allauth.account',
 
 
-    'users'
+    'users',
+    'classroom',
 ]
+
+SITE_ID =1
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -85,6 +88,11 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 WSGI_APPLICATION = 'finalProject.wsgi.application'
 
 
@@ -93,7 +101,7 @@ WSGI_APPLICATION = 'finalProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postrgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'react_classroom',
         'USER': 'postgres',
         'PASSWORD': 'password',
@@ -140,3 +148,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'users.User' 
