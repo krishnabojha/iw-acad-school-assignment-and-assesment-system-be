@@ -2,6 +2,8 @@ from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 from .serilizers import ClassRoomModelSerializer, StudyMaterialModelSerializer
 from .serilizers import ClassRoom, StudyMaterial
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 class ClassCreateApiView(CreateAPIView):
     serializer_class = ClassRoomModelSerializer
@@ -11,6 +13,9 @@ class ClassCreateApiView(CreateAPIView):
 
 class ClassListApiView(ListAPIView):
     serializer_class = ClassRoomModelSerializer
+    authentication_classes = [TokenAuthentication,]
+    permission_classes = [IsAuthenticated,]
+
     def get_queryset(self):
         return ClassRoom.objects.all()
 
