@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'users',
     'corsheaders',
+    'api'
 
 ]
 SITE_ID = 1
@@ -149,7 +150,7 @@ AUTH_USER_MODEL = 'users.User'
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer',
-    # 'TOKEN_SERIALIZER': 'users.serializers.TokenSerializer'
+    'TOKEN_SERIALIZER': 'users.serializers.TokenSerializer'
 }
 
 # whether the user is teacher or student
