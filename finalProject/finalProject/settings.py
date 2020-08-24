@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(^5szp%x63zf9igg#(83#i22c1228vdbb+c=po2t&c=8qf731f'
+SECRET_KEY = '+1ztt#lu&03&@%p)ocvjr9e0_(-ussmaeedaa4yyj540-@iew!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,17 +37,30 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'studymaterial',
+
+    'django.contrib.sites',
+    'rest_auth',
+    'rest_auth.registration',
     'rest_framework',
-    ## for permission to react
+    'rest_framework.authtoken',
     'corsheaders',
+    'allauth',
+    'allauth.account',
+
+
+    'users',
+    'classroom',
 ]
-### added for react ###
-CORS_ORIGIN_WHITELIST = [ 'http://localhost:3000' ]
+
+SITE_ID =1
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware', # new
-    'django.middleware.common.CommonMiddleware', # new
+
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+   
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -75,6 +88,11 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 WSGI_APPLICATION = 'finalProject.wsgi.application'
 
 
@@ -84,9 +102,9 @@ WSGI_APPLICATION = 'finalProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'admin',
-        'PASSWORD': 'postgres',
+        'NAME': 'react_classroom',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -131,6 +149,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-## meadia files
-MEDIA_ROOT= os.path.join(BASE_DIR,"media")
-MEDIA_URL= "/media/"
+AUTH_USER_MODEL = 'users.User' 
