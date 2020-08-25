@@ -13,8 +13,8 @@ class ClassCreateApiView(CreateAPIView):
 
 class ClassListApiView(ListAPIView):
     serializer_class = ClassRoomModelSerializer
-    authentication_classes = [TokenAuthentication,]
-    permission_classes = [IsAuthenticated,]
+    # authentication_classes = [TokenAuthentication,]
+    # permission_classes = [IsAuthenticated,]
 
     def get_queryset(self):
         return ClassRoom.objects.all()
