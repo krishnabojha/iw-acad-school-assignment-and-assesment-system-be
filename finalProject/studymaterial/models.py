@@ -1,9 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class ClassRoom(models.Model):
     classname = models.CharField(max_length = 100)
     email = models.EmailField()
     created_at = models.DateTimeField(auto_now_add = True)
+    classuser = models.ManyToManyField(User, related_name='classuser')
 
     def __str__(self):
         return self.classname
