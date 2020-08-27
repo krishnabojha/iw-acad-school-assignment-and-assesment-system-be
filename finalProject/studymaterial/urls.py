@@ -15,6 +15,6 @@ urlpatterns = [
     path('studymaterial_material_update/<int:pk>/', StudyUpdateview.as_view()),
     path('studymaterial_material_retrieve/<int:pk>/', StudyRetrieveView.as_view()),
     ### Classes of a student
-    path('myclasses_create/<pk>', StudentUserCreateView.as_view()),
+    path('myclasses_create/', StudentUserCreateView.as_view()),
     path('myclasses_list/<pk>', StudentUserListView.as_view())
 ]

@@ -55,17 +55,22 @@ class StudyRetrieveView(RetrieveAPIView):
     serializer_class = StudyMaterialModelSerializer
 
 ######## Student Class many to many relation(display list of the class of the user)
-class StudentUserCreateView(UpdateAPIView):
+class StudentUserCreateView(CreateAPIView):
     serializer_class = StudentClassModelSerializer
     # def get_queryset(self):
-    #     return ClassRoom.objects.get(id = 16).classuser.add(18)
-    queryset = ClassRoom.objects.all()
-    def perform_create(self, serilizer):
-        serializer.save()
-
+    #     print('this is request and its test', self.data)
+    #     return ClassRoom.objects.all()
+        # return ClassRoom.objects.get(id = 17).classuser.add(1)
+    # queryset = ClassRoom.objects.all()
+    def perform_create(self, request):
+        print('this is classroom id',request.data['classroom_id'])
+        print('this is user id', request.data['user_id'])
+        ClassRoom.objects.get(id = request.data['classroom_id']).classuser.add(request.data['user_id'])
+    #     # serializer.save()
+    
 class StudentUserListView(ListAPIView):
     serializer_class = StudentClassListModelSerializer
     def get_queryset(self):
         print('Id of class(pk) : ', self.kwargs.get('pk'))
-        print('this is many to many ', ClassRoom.objects.filter(classuser = 18)[1].classname)
-        return ClassRoom.objects.filter(classuser = 14)
+        # print('this is many to many ', ClassRoom.objects.filter(classuser = self.kwargs.get('pk'))[1].classname)
+        return ClassRoom.objects.filter(classuser = self.kwargs.get('pk'))

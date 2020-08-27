@@ -21,8 +21,9 @@ class StudentClassModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClassRoom
         fields = ['classroom_id', 'user_id']
+
 class StudentClassListModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClassRoom
         fields = '__all__'
-        depth = 1
+        # depth = 1
