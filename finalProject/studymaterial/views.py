@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
-from .serilizers import ClassRoomModelSerializer, StudyMaterialModelSerializer, StudentClassModelSerializer, StudentClassListModelSerializer
-from .serilizers import ClassRoom, StudyMaterial
+from .serilizers import (ClassRoomModelSerializer, StudyMaterialModelSerializer, 
+                        StudentClassModelSerializer, StudentClassListModelSerializer, 
+                        UserInfoModelSerializer)
+from .serilizers import ClassRoom, StudyMaterial, UserProfile
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
@@ -57,11 +59,6 @@ class StudyRetrieveView(RetrieveAPIView):
 ######## Student Class many to many relation(display list of the class of the user)
 class StudentUserCreateView(CreateAPIView):
     serializer_class = StudentClassModelSerializer
-    # def get_queryset(self):
-    #     print('this is request and its test', self.data)
-    #     return ClassRoom.objects.all()
-        # return ClassRoom.objects.get(id = 17).classuser.add(1)
-    # queryset = ClassRoom.objects.all()
     def perform_create(self, request):
         print('this is classroom id',request.data['classroom_id'])
         print('this is user id', request.data['user_id'])
@@ -74,3 +71,19 @@ class StudentUserListView(ListAPIView):
         print('Id of class(pk) : ', self.kwargs.get('pk'))
         # print('this is many to many ', ClassRoom.objects.filter(classuser = self.kwargs.get('pk'))[1].classname)
         return ClassRoom.objects.filter(classuser = self.kwargs.get('pk'))
+
+# user profile api
+class UserInfoCreateView(CreateAPIView):
+    serializer_class = UserInfoModelSerializer
+
+    def perform_create(self, serializer):
+        serializer.save()
+class UserInfoListView(ListAPIView):
+    serializer_class = UserInfoModelSerializer
+
+    def get_queryset(self):
+        return UserProfile.objects.all()
+
+class UserInfoUpdateView(UpdateAPIView):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserInfoModelSerializer
