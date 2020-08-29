@@ -1,20 +1,20 @@
 
 from django.urls import path
-from .views import AssignmentPDFCreateApiView, AssignmentPDFListApiView, AssignmentPDFUpdateview, AssignmentPDFDeleteAPIView, AssignmentPDFRetrieveView
-from .views import AssignmentSubmitCreateApiView, AssignmentSubmissionList
-from .views import CreateGrade, GradeList
-
+import assignment.views as apiviews
 
 urlpatterns = [
-    path('assignmentpdf_create/', AssignmentPDFCreateApiView.as_view()),
-    path('assignmentpdf_list/<pk>', AssignmentPDFListApiView.as_view()),
-    path('assignmentpdf_delete/<pk>/', AssignmentPDFDeleteAPIView.as_view()),
-    path('assignmentpdf_update/<int:pk>/', AssignmentPDFUpdateview.as_view()),
-    path('assignmentpdf_retrieve/<int:pk>/', AssignmentPDFRetrieveView.as_view()),
+    path('assignmentpdf_create/', apiviews.AssignmentPDFCreateApiView.as_view()),
+    path('assignmentpdf_list/', apiviews.AssignmentPDFListApiView.as_view()),
+    path('assignmentpdf_delete/<pk>/', apiviews.AssignmentPDFDeleteAPIView.as_view()),
+    path('assignmentpdf_update/<int:pk>/', apiviews.AssignmentPDFUpdateview.as_view()),
+    path('assignmentpdf_retrieve/<int:pk>/', apiviews.AssignmentPDFRetrieveView.as_view()),
 
-    path('assignmentsubmit/create/',AssignmentSubmitCreateApiView.as_view()),
-    path('assignmentsubmit/list/',AssignmentSubmissionList.as_view()),
+    path('assignmentsubmit/create/',apiviews.AssignmentSubmitCreateApiView.as_view()),
+    path('assignmentsubmit/list/',apiviews.AssignmentSubmissionList.as_view()),
+    path('assignmentsubmit/delete/<int:pk>', apiviews.AssignmentSubmissionDelete.as_view()),
 
-    path('grade/create/', CreateGrade.as_view()),
-    path('grade/list/', GradeList.as_view()),
+    path('grade/create/', apiviews.CreateGrade.as_view()),
+    path('grade/delete/<int:pk>', apiviews.GradeDelete.as_view()),
+    path('grade/update/<int:pk>', apiviews.GradeUpdate.as_view()),
+    path('grade/list/', apiviews.GradeList.as_view()),
 ]
