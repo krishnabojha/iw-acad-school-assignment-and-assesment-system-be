@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'assignment',
     'studymaterial',
     'Authentication',
     'rest_framework',
@@ -87,9 +89,9 @@ WSGI_APPLICATION = 'finalProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'admin',
-        'PASSWORD': 'postgres',
+        'NAME': 'ojha',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '',
     }
