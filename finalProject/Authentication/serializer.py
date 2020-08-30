@@ -5,7 +5,7 @@ from rest_framework.authtoken.models import Token
 class UserLoginModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password']
+        fields = ['id', 'username','first_name','last_name', 'email', 'password']
 class UserTokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Token
@@ -25,4 +25,9 @@ class UserSignUpModelSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
-
+# password reset serializer
+class ResetUserpasswordModelSerializer(serializers.Serializer):
+    newpassword = serializers.CharField()
+    class Meta:
+        model = User
+        fields = ['newpassword']

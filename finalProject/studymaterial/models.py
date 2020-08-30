@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     profileImg = models.ImageField(upload_to = 'images/', null = True, blank = True)
     address = models.CharField(max_length=20, blank = True)
+    bio = models.CharField(max_length=100, blank= True)
     userid = models.OneToOneField(User, on_delete=models.CASCADE)
     
 class ClassRoom(models.Model):

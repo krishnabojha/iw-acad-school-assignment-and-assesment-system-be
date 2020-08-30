@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView,UpdateAPIView
-from .serializer import UserLoginModelSerializer, UserSignUpModelSerializer, UserTokenSerializer
+from .serializer import (UserLoginModelSerializer, UserSignUpModelSerializer,
+                        UserTokenSerializer, ResetUserpasswordModelSerializer)
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -34,3 +35,14 @@ class UserLoginToken(ListAPIView):
 
     def get_queryset(self):
         return Token.objects.all()
+
+### password reset
+class UserPasswordReset(CreateAPIView):
+    serializer_class = ResetUserpasswordModelSerializer
+    def perform_create(self, request):
+        print('password this: ',request.data['newpassword'])
+        changeobject = User.objects.get(id = self.kwargs.get('pk'))
+        changeobject.set_password(request.data['newpassword'])
+        changeobject.save()
+
+    

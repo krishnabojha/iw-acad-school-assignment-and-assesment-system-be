@@ -82,7 +82,7 @@ class UserInfoListView(ListAPIView):
     serializer_class = UserInfoModelSerializer
 
     def get_queryset(self):
-        return UserProfile.objects.all()
+        return UserProfile.objects.filter(userid= self.kwargs.get('pk'))
 
 class UserInfoUpdateView(UpdateAPIView):
     queryset = UserProfile.objects.all()

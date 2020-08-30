@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     ## for permission to react
     'corsheaders',
+    ### reset password
+    'django_rest_passwordreset',
 ]
 ### added for react ###
 CORS_ORIGIN_WHITELIST = [ 'http://localhost:3000' ]
@@ -137,3 +139,5 @@ STATIC_URL = '/static/'
 ## meadia files
 MEDIA_ROOT= os.path.join(BASE_DIR,"media")
 MEDIA_URL= "/media/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

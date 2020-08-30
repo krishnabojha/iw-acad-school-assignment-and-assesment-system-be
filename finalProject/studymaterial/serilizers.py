@@ -33,4 +33,5 @@ class StudentClassListModelSerializer(serializers.ModelSerializer):
 class UserInfoModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['id','profileImg', 'address', 'userid']
+        fields = ['id','profileImg', 'address', 'bio', 'userid']
+        

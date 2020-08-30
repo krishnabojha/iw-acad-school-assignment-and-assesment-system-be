@@ -20,6 +20,6 @@ urlpatterns = [
     path('myclasses_list/<pk>', StudentUserListView.as_view()),
     ### user profile info
     path('userinfo_create/', UserInfoCreateView.as_view()),
-    path('userinfo_list/', UserInfoListView.as_view()),
+    path('userinfo_list/<pk>', UserInfoListView.as_view()),
     path('userinfo_update/<int:pk>', UserInfoUpdateView.as_view())
 ]
