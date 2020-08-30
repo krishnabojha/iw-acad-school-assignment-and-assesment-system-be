@@ -18,14 +18,12 @@ class AssignmentSubmit(models.Model):
     files = models.FileField(upload_to='files/submission', blank=True, null=True)
 
     def __str__(self):
-        return self.submitter.username, self.assignment_id.file_title
+        return "Assignment of user :"+self.submitter.username + " on assignment title:"+self.assignment_id.file_title
 
 class AssignmentGrades(models.Model):
     submitted_asignment = models.OneToOneField(AssignmentSubmit, on_delete=models.CASCADE)
     score = models.IntegerField(blank=True)
 
-    def __str__(self):
-        return self.submitted_asignment.submitter.username
 
 
 
