@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
-from .views import UserListApiView, UserCreateApiView, UserDeleteAPIView, UserUpdateview, UserLoginToken, UserPasswordReset
+from .views import UserListApiView, UserCreateApiView, UserDeleteAPIView, UserUpdateview, UserLoginToken, UserPasswordReset, SendMail
 
 urlpatterns = [
     path('create/', UserCreateApiView.as_view()),
@@ -10,7 +10,6 @@ urlpatterns = [
     path('login/', obtain_auth_token),
     path('token/', UserLoginToken.as_view()),
     path('reset_password/<pk>', UserPasswordReset.as_view()),
-    # path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
-
+    path('send_otp/', SendMail.as_view())
 
 ]

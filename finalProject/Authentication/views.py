@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView,UpdateAPIView
 from .serializer import (UserLoginModelSerializer, UserSignUpModelSerializer,
-                        UserTokenSerializer, ResetUserpasswordModelSerializer)
+                        UserTokenSerializer, ResetUserpasswordModelSerializer, OTPModelSerializer)
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
+from django.core.mail import send_mail
 
 class UserCreateApiView(CreateAPIView):
     serializer_class = UserSignUpModelSerializer
@@ -45,4 +46,8 @@ class UserPasswordReset(CreateAPIView):
         changeobject.set_password(request.data['newpassword'])
         changeobject.save()
 
-    
+class SendMail(CreateAPIView):
+    serializer_class = OTPModelSerializer
+    def perform_create(self, request):
+        print('this is send mail', request.data['otpcode'])
+        send_mail(subject='Your OTP code', message= 'Enter this otp code to reset  password :\n'+str(request.data['otpcode']), from_email= 'admin@admin', recipient_list= [request.data['email'], ])

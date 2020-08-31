@@ -31,3 +31,9 @@ class ResetUserpasswordModelSerializer(serializers.Serializer):
     class Meta:
         model = User
         fields = ['newpassword']
+
+class OTPModelSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    otpcode = serializers.IntegerField()
+    class Meta:
+        fields = ['email', 'otpcode']

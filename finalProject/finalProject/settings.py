@@ -44,8 +44,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     ## for permission to react
     'corsheaders',
-    ### reset password
-    'django_rest_passwordreset',
+
 ]
 ### added for react ###
 CORS_ORIGIN_WHITELIST = [ 'http://localhost:3000' ]
@@ -140,4 +139,15 @@ STATIC_URL = '/static/'
 MEDIA_ROOT= os.path.join(BASE_DIR,"media")
 MEDIA_URL= "/media/"
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# send mail using mailtrap
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'cb2c9dd5d3b8b8'
+EMAIL_HOST_PASSWORD = '5878c0c65b42b6'
+EMAIL_PORT = '2525'
+
+# EMAIL_USER_TLS = True
+# EMAIL_HOST = 'smtp.gmail.host'
+# EMAIL_HOST_USER = 'bahadurkrishna5555@gmail.com'
+# EMAIL_HOST_PASSWORD = ''
+# EMAIL_PORT = 587
