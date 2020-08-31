@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('data/', include('studymaterial.urls')),
     path('user/', include('Authentication.urls')),
+    path('assignment/', include('assignment.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
