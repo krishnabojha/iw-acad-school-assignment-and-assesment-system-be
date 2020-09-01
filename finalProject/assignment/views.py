@@ -9,6 +9,7 @@ from .serializers import (
     AssignmentGradesReadSerializer,
     AssignmentGradesWriteSerializer,)
 from .models import AssignmentPDF, AssignmentSubmit, AssignmentGrades
+from studymaterial.models import ClassRoom
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
@@ -25,7 +26,8 @@ class AssignmentPDFListApiView(ListAPIView):
     serializer_class = AssignmentPDFModelReadSerializer
 
     def get_queryset(self):
-        return AssignmentPDF.objects.all()
+        print('assignment filter', AssignmentPDF.objects.filter(classid= ClassRoom.objects.get(id = 5)))
+        return  AssignmentPDF.objects.filter(classid= ClassRoom.objects.get(id = self.kwargs.get('pk')))
 
 
 class AssignmentPDFDeleteAPIView(DestroyAPIView):

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class AssignmentPDF(models.Model):
     file_title = models.CharField(max_length=150, blank=True, null=True)
     files = models.FileField(upload_to='files/', blank=True, null=True)
+    due_date = models.CharField(max_length=20, blank= True, null= True)
     classid = models.ForeignKey(ClassRoom, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -23,8 +24,4 @@ class AssignmentSubmit(models.Model):
 class AssignmentGrades(models.Model):
     submitted_asignment = models.OneToOneField(AssignmentSubmit, on_delete=models.CASCADE)
     score = models.IntegerField(blank=True)
-
-
-
-
 

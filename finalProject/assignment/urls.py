@@ -4,7 +4,7 @@ import assignment.views as apiviews
 
 urlpatterns = [
     path('assignmentpdf_create/', apiviews.AssignmentPDFCreateApiView.as_view()),
-    path('assignmentpdf_list/', apiviews.AssignmentPDFListApiView.as_view()),
+    path('assignmentpdf_list/<pk>', apiviews.AssignmentPDFListApiView.as_view()),
     path('assignmentpdf_delete/<pk>/', apiviews.AssignmentPDFDeleteAPIView.as_view()),
     path('assignmentpdf_update/<int:pk>/', apiviews.AssignmentPDFUpdateview.as_view()),
     path('assignmentpdf_retrieve/<int:pk>/', apiviews.AssignmentPDFRetrieveView.as_view()),

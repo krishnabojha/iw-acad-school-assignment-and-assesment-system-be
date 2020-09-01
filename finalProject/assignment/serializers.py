@@ -21,25 +21,25 @@ class ClassRoomModelSerializer(serializers.ModelSerializer):
 class AssignmentSubmitReadSerializer(serializers.ModelSerializer):
     class Meta:
         model = AssignmentSubmit
-        fields = ['assignment_id', 'submitter', 'files', 'id']
+        fields = ['id','assignment_id', 'submitter', 'files']
         depth = 1
 
 class AssignmentSubmitWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = AssignmentSubmit
-        fields = ['assignment_id', 'submitter', 'files', 'id']
+        fields = ['id','assignment_id', 'submitter', 'files']
 
 
 class AssignmentPDFModelReadSerializer(serializers.ModelSerializer):
     class Meta:
         model = AssignmentPDF
-        fields = ['file_title', 'files', 'created_at', 'updated_at', 'classid']
+        fields = ['id','file_title', 'files', 'created_at', 'updated_at', 'classid','due_date']
         depth =1
 
 class AssignmentPDFModelWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = AssignmentPDF
-        fields = ['file_title', 'files', 'created_at', 'updated_at', 'classid']
+        fields = ['file_title', 'files', 'created_at', 'updated_at', 'classid', 'due_date']
 
 
 class AssignmentGradesReadSerializer(serializers.ModelSerializer):
