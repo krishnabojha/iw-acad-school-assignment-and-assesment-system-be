@@ -52,7 +52,8 @@ class AssignmentSubmitCreateApiView(CreateAPIView):
 
 class AssignmentSubmissionList(ListAPIView):
     serializer_class = AssignmentSubmitReadSerializer
-    queryset = AssignmentSubmit.objects.all()
+    def get_queryset(self):
+        return AssignmentSubmit.objects.all()
 
 class AssignmentSubmissionDelete(DestroyAPIView):
     queryset = AssignmentSubmit.objects.all()

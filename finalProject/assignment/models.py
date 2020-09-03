@@ -23,5 +23,5 @@ class AssignmentSubmit(models.Model):
 
 class AssignmentGrades(models.Model):
     submitted_asignment = models.OneToOneField(AssignmentSubmit, on_delete=models.CASCADE)
-    score = models.IntegerField(blank=True)
+    score = models.CharField(max_length=10, blank=True)
 
