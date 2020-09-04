@@ -16,7 +16,7 @@ class UserSignUpModelSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only = True)
     class Meta:
         model = User
-        fields = ['first_name','last_name','username', 'email', 'password']
+        fields = ['id','first_name','last_name','username', 'email', 'password']
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
