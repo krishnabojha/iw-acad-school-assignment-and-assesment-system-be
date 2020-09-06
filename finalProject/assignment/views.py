@@ -26,7 +26,7 @@ class AssignmentPDFListApiView(ListAPIView):
     serializer_class = AssignmentPDFModelReadSerializer
 
     def get_queryset(self):
-        print('assignment filter', AssignmentPDF.objects.filter(classid= ClassRoom.objects.get(id = 5)))
+       # print('assignment filter', AssignmentPDF.objects.filter(classid= ClassRoom.objects.get(id = 5)))
         return  AssignmentPDF.objects.filter(classid= ClassRoom.objects.get(id = self.kwargs.get('pk')))
 
 
